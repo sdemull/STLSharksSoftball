@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St. Louis Sharks Softball | St. Louis, MI</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0d0d0d;
+    --dark: #141414;
+    --panel: #1a1a1a;
+    --red: #cc0000;
+    --red-bright: #e81010;
+    --red-dark: #8a0000;
+    --white: #ffffff;
+    --gray: #aaaaaa;
+    --light: #f0f0f0;
+    --border: rgba(255,255,255,0.1);
+  }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘Inter’, sans-serif;
+background: var(–black);
+color: var(–white);
+overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+height: 64px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 48px;
+background: rgba(13,13,13,0.95);
+backdrop-filter: blur(10px);
+border-bottom: 2px solid var(–red);
+}
+
+.nav-brand {
+display: flex;
+align-items: center;
+gap: 14px;
+text-decoration: none;
+}
+
+.shark-logo {
+width: 38px;
+height: 38px;
+background: var(–red);
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.1rem;
+}
+
+.nav-name {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.5rem;
+letter-spacing: 0.06em;
+color: var(–white);
+}
+
+.nav-name span { color: var(–red); }
+
+.nav-links {
+display: flex;
+gap: 28px;
+list-style: none;
+}
+
+.nav-links a {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 500;
+font-size: 0.8rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gray);
+text-decoration: none;
+transition: color 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(–red); }
+
+.nav-gc {
+background: var(–red);
+color: var(–white) !important;
+padding: 8px 18px;
+border-radius: 2px;
+transition: background 0.2s !important;
+}
+
+.nav-gc:hover { background: var(–red-bright) !important; color: var(–white) !important; }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+position: relative;
+overflow: hidden;
+padding: 80px 40px 60px;
+}
+
+.hero-bg {
+position: absolute;
+inset: 0;
+background: radial-gradient(ellipse at center top, #2a0000 0%, #0d0d0d 60%);
+}
+
+.hero-grid {
+position: absolute;
+inset: 0;
+background-image:
+linear-gradient(rgba(204,0,0,0.06) 1px, transparent 1px),
+linear-gradient(90deg, rgba(204,0,0,0.06) 1px, transparent 1px);
+background-size: 60px 60px;
+mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, transparent 70%);
+}
+
+.hero-badge {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 500;
+font-size: 0.7rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–red);
+margin-bottom: 24px;
+position: relative;
+z-index: 2;
+display: flex;
+align-items: center;
+gap: 12px;
+justify-content: center;
+}
+
+.hero-badge::before, .hero-badge::after {
+content: ‘’;
+width: 40px;
+height: 1px;
+background: var(–red);
+}
+
+.hero-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(5rem, 14vw, 12rem);
+line-height: 0.88;
+letter-spacing: 0.02em;
+position: relative;
+z-index: 2;
+margin-bottom: 8px;
+}
+
+.hero-title .red { color: var(–red); }
+
+.hero-subtitle {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(1.5rem, 3vw, 2.5rem);
+letter-spacing: 0.2em;
+color: var(–gray);
+position: relative;
+z-index: 2;
+margin-bottom: 48px;
+}
+
+.hero-stats {
+display: flex;
+gap: 0;
+position: relative;
+z-index: 2;
+border: 1px solid var(–border);
+}
+
+.hero-stat {
+padding: 24px 40px;
+border-right: 1px solid var(–border);
+text-align: center;
+background: rgba(255,255,255,0.03);
+}
+
+.hero-stat:last-child { border-right: none; }
+
+.hero-stat-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 2.5rem;
+color: var(–red);
+display: block;
+line-height: 1;
+}
+
+.hero-stat-label {
+font-size: 0.65rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gray);
+display: block;
+margin-top: 4px;
+}
+
+/* ── COUNTDOWN ── */
+.countdown-wrap {
+position: relative;
+z-index: 2;
+text-align: center;
+margin-top: 36px;
+}
+
+.countdown-label {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 500;
+font-size: 0.68rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–red);
+margin-bottom: 6px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+}
+
+.countdown-label::before, .countdown-label::after {
+content: ‘’;
+width: 28px;
+height: 1px;
+background: rgba(204,0,0,0.5);
+}
+
+.countdown-game-info {
+font-size: 0.75rem;
+color: var(–gray);
+margin-bottom: 16px;
+letter-spacing: 0.05em;
+}
+
+.countdown-clock {
+display: flex;
+gap: 0;
+justify-content: center;
+border: 1px solid rgba(204,0,0,0.3);
+}
+
+.cd-unit {
+padding: 16px 28px;
+border-right: 1px solid rgba(204,0,0,0.2);
+background: rgba(204,0,0,0.06);
+min-width: 80px;
+text-align: center;
+}
+
+.cd-unit:last-child { border-right: none; }
+
+.cd-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 2.8rem;
+color: var(–white);
+line-height: 1;
+display: block;
+min-width: 2ch;
+}
+
+.cd-label {
+font-size: 0.58rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–gray);
+display: block;
+margin-top: 4px;
+}
+
+/* ── TABS ── */
+.tab-bar {
+background: var(–dark);
+border-bottom: 2px solid var(–border);
+display: flex;
+gap: 0;
+position: sticky;
+top: 64px;
+z-index: 50;
+overflow-x: auto;
+scrollbar-width: none;
+}
+
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.78rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gray);
+padding: 16px 28px;
+cursor: pointer;
+border-bottom: 2px solid transparent;
+margin-bottom: -2px;
+white-space: nowrap;
+transition: color 0.2s, border-color 0.2s;
+user-select: none;
+}
+
+.tab:hover { color: var(–white); }
+.tab.active { color: var(–red); border-bottom-color: var(–red); }
+
+/* ── SECTIONS ── */
+.section { display: none; padding: 60px 60px 80px; }
+.section.active { display: block; }
+
+/* ── ROSTER ── */
+.roster-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 16px;
+margin-top: 40px;
+}
+
+.player-card {
+background: var(–panel);
+border: 1px solid var(–border);
+border-top: 3px solid var(–red);
+padding: 0 0 24px;
+text-align: center;
+transition: transform 0.2s, border-color 0.2s;
+cursor: pointer;
+}
+
+.player-card:hover {
+transform: translateY(-4px);
+border-color: rgba(204,0,0,0.4);
+}
+
+.player-photo {
+width: 100%;
+height: 160px;
+background: linear-gradient(135deg, #1a1a1a 0%, #2a0000 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3.5rem;
+margin-bottom: 16px;
+position: relative;
+overflow: hidden;
+}
+
+.player-photo::after {
+content: ‘’;
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+height: 40px;
+background: linear-gradient(transparent, var(–panel));
+}
+
+.player-num {
+position: absolute;
+top: 10px;
+right: 12px;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 2rem;
+color: rgba(204,0,0,0.5);
+line-height: 1;
+}
+
+.player-name {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 1rem;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+margin-bottom: 4px;
+}
+
+.player-pos {
+font-size: 0.72rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–red);
+margin-bottom: 8px;
+font-weight: 600;
+}
+
+.player-grade {
+font-size: 0.75rem;
+color: var(–gray);
+margin-bottom: 12px;
+}
+
+.player-stats-mini {
+display: flex;
+justify-content: center;
+gap: 16px;
+padding: 0 16px;
+}
+
+.mini-stat { text-align: center; }
+
+.mini-stat-val {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 1rem;
+color: var(–white);
+display: block;
+}
+
+.mini-stat-key {
+font-size: 0.6rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–gray);
+}
+
+/* ── STATS TABLE ── */
+.stats-table-wrap {
+overflow-x: auto;
+margin-top: 40px;
+border: 1px solid var(–border);
+border-radius: 2px;
+}
+
+.stats-table {
+width: 100%;
+border-collapse: collapse;
+font-size: 0.875rem;
+min-width: 760px;
+}
+
+.stats-table thead {
+background: var(–red);
+}
+
+.stats-table th {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.7rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+padding: 14px 16px;
+text-align: center;
+color: var(–white);
+cursor: pointer;
+user-select: none;
+white-space: nowrap;
+}
+
+.stats-table th:first-child { text-align: left; padding-left: 24px; }
+.stats-table th:hover { background: var(–red-bright); }
+
+.stats-table tbody tr {
+border-bottom: 1px solid var(–border);
+transition: background 0.15s;
+}
+
+.stats-table tbody tr:hover { background: rgba(204,0,0,0.06); }
+
+.stats-table td {
+padding: 14px 16px;
+text-align: center;
+color: rgba(255,255,255,0.85);
+}
+
+.stats-table td:first-child {
+text-align: left;
+padding-left: 24px;
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+color: var(–white);
+}
+
+.stat-highlight {
+color: var(–red) !important;
+font-weight: 600;
+}
+
+/* ── SCHEDULE ── */
+.schedule-list {
+margin-top: 40px;
+display: flex;
+flex-direction: column;
+gap: 2px;
+}
+
+.game-row {
+display: grid;
+grid-template-columns: 120px 1fr 140px 140px;
+align-items: center;
+background: var(–panel);
+border: 1px solid var(–border);
+padding: 20px 28px;
+gap: 20px;
+transition: background 0.15s;
+}
+
+.game-row:hover { background: rgba(255,255,255,0.03); }
+
+.game-row.win { border-left: 4px solid #22c55e; }
+.game-row.loss { border-left: 4px solid var(–red); }
+.game-row.upcoming { border-left: 4px solid var(–gray); }
+
+.game-date {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 500;
+font-size: 0.8rem;
+letter-spacing: 0.1em;
+color: var(–gray);
+text-transform: uppercase;
+}
+
+.game-opponent {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 1rem;
+color: var(–white);
+}
+
+.game-location {
+font-size: 0.75rem;
+color: var(–gray);
+}
+
+.game-result {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.3rem;
+letter-spacing: 0.05em;
+}
+
+.result-w { color: #22c55e; }
+.result-l { color: var(–red); }
+.result-tbd { color: var(–gray); font-size: 0.85rem; letter-spacing: 0.1em; font-family: ‘Oswald’, sans-serif; }
+
+.game-gc {
+display: inline-block;
+background: rgba(204,0,0,0.15);
+border: 1px solid rgba(204,0,0,0.4);
+color: var(–red);
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.68rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 6px 14px;
+text-decoration: none;
+transition: background 0.2s;
+border-radius: 2px;
+text-align: center;
+}
+
+.game-gc:hover { background: rgba(204,0,0,0.3); }
+
+/* ── VIDEOS ── */
+.video-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 16px;
+margin-top: 40px;
+}
+
+.video-card {
+background: var(–panel);
+border: 1px solid var(–border);
+overflow: hidden;
+cursor: pointer;
+transition: transform 0.2s;
+}
+
+.video-card:hover { transform: translateY(-4px); }
+
+.video-thumb {
+width: 100%;
+height: 180px;
+background: linear-gradient(135deg, #1a1a1a 0%, #2a0000 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+}
+
+.play-btn {
+width: 56px;
+height: 56px;
+background: rgba(204,0,0,0.9);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.2rem;
+z-index: 2;
+transition: transform 0.2s, background 0.2s;
+}
+
+.video-card:hover .play-btn {
+transform: scale(1.1);
+background: var(–red);
+}
+
+.video-meta {
+padding: 16px 20px;
+}
+
+.video-tag {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.65rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–red);
+margin-bottom: 6px;
+display: block;
+}
+
+.video-title {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.95rem;
+text-transform: uppercase;
+margin-bottom: 6px;
+}
+
+.video-date {
+font-size: 0.75rem;
+color: var(–gray);
+}
+
+/* ── PHOTOS ── */
+.photo-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 8px;
+margin-top: 40px;
+}
+
+.photo-card {
+aspect-ratio: 4/3;
+background: linear-gradient(135deg, #1a1a1a 0%, #2a0000 100%);
+position: relative;
+overflow: hidden;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+border: 1px solid var(–border);
+transition: transform 0.2s;
+}
+
+.photo-card:hover { transform: scale(1.02); z-index: 1; }
+
+.photo-card:nth-child(3n+1) { grid-column: span 2; }
+
+.photo-overlay {
+position: absolute;
+inset: 0;
+background: rgba(204,0,0,0);
+transition: background 0.2s;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.photo-card:hover .photo-overlay { background: rgba(204,0,0,0.2); }
+
+/* ── SPONSORS ── */
+.sponsors-section { margin-top: 40px; }
+
+.sponsor-tier {
+margin-bottom: 48px;
+}
+
+.tier-label {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.7rem;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: var(–red);
+margin-bottom: 20px;
+padding-bottom: 10px;
+border-bottom: 1px solid var(–border);
+}
+
+.sponsors-row {
+display: flex;
+flex-wrap: wrap;
+gap: 16px;
+}
+
+.sponsor-slot {
+background: var(–panel);
+border: 1px solid var(–border);
+padding: 32px 48px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+min-width: 200px;
+cursor: pointer;
+transition: border-color 0.2s;
+}
+
+.sponsor-slot:hover { border-color: var(–red); }
+
+.sponsor-slot.add-sponsor {
+border-style: dashed;
+color: var(–gray);
+}
+
+.sponsor-name {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 700;
+font-size: 1.1rem;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+color: var(–white);
+margin-top: 8px;
+}
+
+.sponsor-type {
+font-size: 0.72rem;
+color: var(–gray);
+margin-top: 4px;
+}
+
+/* ── GAMECHANGER BANNER ── */
+.gc-banner {
+background: linear-gradient(90deg, var(–red-dark) 0%, var(–red) 100%);
+padding: 32px 60px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 24px;
+flex-wrap: wrap;
+}
+
+.gc-banner-text h3 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.8rem;
+letter-spacing: 0.05em;
+margin-bottom: 4px;
+}
+
+.gc-banner-text p {
+font-size: 0.85rem;
+color: rgba(255,255,255,0.8);
+}
+
+.gc-btn {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+background: var(–white);
+color: var(–red);
+font-family: ‘Oswald’, sans-serif;
+font-weight: 700;
+font-size: 0.85rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 14px 28px;
+text-decoration: none;
+border-radius: 2px;
+white-space: nowrap;
+transition: transform 0.2s;
+}
+
+.gc-btn:hover { transform: translateY(-2px); }
+
+/* ── SECTION HEADER ── */
+.section-header {
+display: flex;
+align-items: flex-end;
+justify-content: space-between;
+margin-bottom: 8px;
+flex-wrap: wrap;
+gap: 16px;
+}
+
+.section-eyebrow {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 500;
+font-size: 0.7rem;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: var(–red);
+margin-bottom: 8px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.section-eyebrow::before {
+content: ‘’;
+width: 20px;
+height: 2px;
+background: var(–red);
+}
+
+.section-h2 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(2.2rem, 4vw, 3.2rem);
+letter-spacing: 0.04em;
+line-height: 1;
+}
+
+.section-action {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.78rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–red);
+text-decoration: none;
+border: 1px solid var(–red);
+padding: 10px 20px;
+transition: background 0.2s;
+display: inline-block;
+}
+
+.section-action:hover { background: rgba(204,0,0,0.15); }
+
+/* ── RECORD BANNER ── */
+.record-bar {
+background: var(–panel);
+border-bottom: 1px solid var(–border);
+display: flex;
+justify-content: center;
+gap: 60px;
+padding: 16px;
+flex-wrap: wrap;
+}
+
+.rec-item {
+text-align: center;
+}
+
+.rec-val {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.8rem;
+color: var(–white);
+display: block;
+line-height: 1;
+}
+
+.rec-label {
+font-size: 0.62rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gray);
+}
+
+/* ── FOOTER ── */
+footer {
+background: #080808;
+border-top: 1px solid var(–border);
+padding: 48px 60px 32px;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 48px;
+}
+
+.footer-logo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.8rem;
+letter-spacing: 0.06em;
+color: var(–white);
+margin-bottom: 12px;
+display: block;
+}
+
+.footer-logo span { color: var(–red); }
+
+.footer-tagline-small {
+font-size: 0.82rem;
+color: var(–gray);
+line-height: 1.6;
+}
+
+.footer-col h4 {
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.7rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–red);
+margin-bottom: 16px;
+}
+
+.footer-col ul {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.footer-col a {
+font-size: 0.85rem;
+color: var(–gray);
+text-decoration: none;
+transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(–white); }
+
+.footer-bottom {
+grid-column: 1 / -1;
+padding-top: 24px;
+border-top: 1px solid var(–border);
+display: flex;
+justify-content: space-between;
+font-size: 0.72rem;
+color: rgba(255,255,255,0.3);
+flex-wrap: wrap;
+gap: 8px;
+}
+
+@media (max-width: 768px) {
+nav { padding: 0 20px; }
+.nav-links { display: none; }
+.section { padding: 40px 20px 60px; }
+.gc-banner { padding: 24px 20px; }
+.record-bar { gap: 24px; }
+footer { grid-template-columns: 1fr; gap: 32px; padding: 32px 20px; }
+.game-row { grid-template-columns: 100px 1fr 100px; }
+.game-gc { display: none; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="shark-logo">🦈</div>
+    <div class="nav-name">St. Louis <span>Sharks</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="switchTab('roster'); return false;">Roster</a></li>
+    <li><a href="#" onclick="switchTab('stats'); return false;">Stats</a></li>
+    <li><a href="#" onclick="switchTab('schedule'); return false;">Schedule</a></li>
+    <li><a href="#" onclick="switchTab('videos'); return false;">Videos</a></li>
+    <li><a href="#" onclick="switchTab('photos'); return false;">Photos</a></li>
+    <li><a href="https://gc.com" target="_blank" class="nav-gc">GameChanger ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-badge">Varsity Softball · St. Louis, MI · 2025–26</div>
+  <h1 class="hero-title">ST. LOUIS<br><span class="red">SHARKS</span></h1>
+  <div class="hero-subtitle">Varsity Girls Softball · MHSAA Division 4</div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">2026</span>
+      <span class="hero-stat-label">Season</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">D4</span>
+      <span class="hero-stat-label">Division</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">MHSAA</span>
+      <span class="hero-stat-label">Association</span>
+    </div>
+  </div>
+
+  <div class="countdown-wrap">
+    <div class="countdown-label">Season Opener</div>
+    <div class="countdown-game-info">Tuesday, April 7 · 4:00 PM</div>
+    <div class="countdown-clock">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">—</span><span class="cd-label">Days</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">—</span><span class="cd-label">Hours</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-mins">—</span><span class="cd-label">Mins</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-secs">—</span><span class="cd-label">Secs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMECHANGER BANNER -->
+
+<div class="gc-banner">
+  <div class="gc-banner-text">
+    <h3>Live Stats & Scores on GameChanger</h3>
+    <p>Follow every pitch, at-bat, and play in real time on the official team page.</p>
+  </div>
+  <a href="https://gc.com" target="_blank" class="gc-btn">🦈 Open GameChanger</a>
+</div>
+
+<!-- RECORD BAR -->
+
+<div class="record-bar">
+  <div class="rec-item"><span class="rec-val">0</span><span class="rec-label">Wins</span></div>
+  <div class="rec-item"><span class="rec-val">0</span><span class="rec-label">Losses</span></div>
+  <div class="rec-item"><span class="rec-val">.000</span><span class="rec-label">Win %</span></div>
+  <div class="rec-item"><span class="rec-val">—</span><span class="rec-label">Run Diff</span></div>
+  <div class="rec-item"><span class="rec-val">2026</span><span class="rec-label">Season</span></div>
+</div>
+
+<!-- TAB BAR -->
+
+<div class="tab-bar">
+  <div class="tab active" onclick="switchTab('roster')">Roster</div>
+  <div class="tab" onclick="switchTab('stats')">Stats</div>
+  <div class="tab" onclick="switchTab('schedule')">Schedule</div>
+  <div class="tab" onclick="switchTab('videos')">Videos</div>
+  <div class="tab" onclick="switchTab('photos')">Photos</div>
+  <div class="tab" onclick="switchTab('sponsors')">Sponsors</div>
+</div>
+
+<!-- ── ROSTER ── -->
+
+<div class="section active" id="sec-roster">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">2025–26 Season</div>
+      <h2 class="section-h2">The Roster</h2>
+    </div>
+  </div>
+  <div class="roster-grid" id="roster-grid">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- ── STATS ── -->
+
+<div class="section" id="sec-stats">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Season Statistics</div>
+      <h2 class="section-h2">Batting Stats</h2>
+    </div>
+    <a href="https://gc.com" target="_blank" class="section-action">Full Stats on GameChanger ↗</a>
+  </div>
+  <div class="stats-table-wrap">
+    <table class="stats-table" id="stats-table">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Player ↕</th>
+          <th onclick="sortTable(1)">Pos ↕</th>
+          <th onclick="sortTable(2)">G ↕</th>
+          <th onclick="sortTable(3)">AB ↕</th>
+          <th onclick="sortTable(4)">H ↕</th>
+          <th onclick="sortTable(5)">2B ↕</th>
+          <th onclick="sortTable(6)">3B ↕</th>
+          <th onclick="sortTable(7)">HR ↕</th>
+          <th onclick="sortTable(8)">RBI ↕</th>
+          <th onclick="sortTable(9)">R ↕</th>
+          <th onclick="sortTable(10)">SB ↕</th>
+          <th onclick="sortTable(11)">AVG ↕</th>
+          <th onclick="sortTable(12)">OBP ↕</th>
+        </tr>
+      </thead>
+      <tbody id="stats-body">
+        <!-- Populated by JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── SCHEDULE ── -->
+
+<div class="section" id="sec-schedule">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">2026 Schedule</div>
+      <h2 class="section-h2">Games</h2>
+    </div>
+    <a href="https://gc.com" target="_blank" class="section-action">Live on GameChanger ↗</a>
+  </div>
+  <div class="schedule-list" id="schedule-list">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- ── VIDEOS ── -->
+
+<div class="section" id="sec-videos">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Team Highlights</div>
+      <h2 class="section-h2">Video Gallery</h2>
+    </div>
+    <a href="#" class="section-action">Upload Video</a>
+  </div>
+  <div class="video-grid" id="video-grid">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- ── PHOTOS ── -->
+
+<div class="section" id="sec-photos">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Season Memories</div>
+      <h2 class="section-h2">Photo Gallery</h2>
+    </div>
+    <a href="#" class="section-action">Upload Photos</a>
+  </div>
+  <div class="photo-grid" id="photo-grid">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- ── SPONSORS ── -->
+
+<div class="section" id="sec-sponsors">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Community Partners</div>
+      <h2 class="section-h2">Our Sponsors</h2>
+    </div>
+    <a href="mailto:sharks@stlouisschools.net" class="section-action">Become a Sponsor</a>
+  </div>
+  <div class="sponsors-section">
+    <div class="sponsor-tier">
+      <div class="tier-label">🥇 Gold Sponsors</div>
+      <div class="sponsors-row">
+        <div class="sponsor-slot">
+          <div style="font-size:2rem">🏪</div>
+          <div class="sponsor-name">Your Business Here</div>
+          <div class="sponsor-type">Gold Sponsor</div>
+        </div>
+        <div class="sponsor-slot add-sponsor">
+          <div style="font-size:1.5rem">+</div>
+          <div style="font-size:0.8rem; margin-top:6px;">Add Gold Sponsor</div>
+        </div>
+      </div>
+    </div>
+    <div class="sponsor-tier">
+      <div class="tier-label">🥈 Silver Sponsors</div>
+      <div class="sponsors-row">
+        <div class="sponsor-slot">
+          <div style="font-size:2rem">🍕</div>
+          <div class="sponsor-name">Local Restaurant</div>
+          <div class="sponsor-type">Silver Sponsor</div>
+        </div>
+        <div class="sponsor-slot">
+          <div style="font-size:2rem">🔧</div>
+          <div class="sponsor-name">Auto & Repair</div>
+          <div class="sponsor-type">Silver Sponsor</div>
+        </div>
+        <div class="sponsor-slot add-sponsor">
+          <div style="font-size:1.5rem">+</div>
+          <div style="font-size:0.8rem; margin-top:6px;">Add Silver Sponsor</div>
+        </div>
+      </div>
+    </div>
+    <div class="sponsor-tier">
+      <div class="tier-label">🥉 Community Sponsors</div>
+      <div class="sponsors-row" id="community-sponsors">
+        <div class="sponsor-slot add-sponsor">
+          <div style="font-size:1.5rem">+</div>
+          <div style="font-size:0.8rem; margin-top:6px;">Support the Sharks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <div>
+    <span class="footer-logo">St. Louis <span>Sharks</span></span>
+    <p class="footer-tagline-small">Varsity Girls Softball · St. Louis High School · St. Louis, MI 48880 · MHSAA Division 4</p>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="#" onclick="switchTab('roster'); return false;">Roster</a></li>
+      <li><a href="#" onclick="switchTab('schedule'); return false;">Schedule</a></li>
+      <li><a href="#" onclick="switchTab('stats'); return false;">Stats</a></li>
+      <li><a href="https://gc.com" target="_blank">GameChanger</a></li>
+      <li><a href="https://www.stlouisschools.net" target="_blank">School Website</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Follow the Sharks</h4>
+    <ul>
+      <li><a href="https://www.maxpreps.com/mi/st-louis/st-louis-sharks/softball/" target="_blank">MaxPreps</a></li>
+      <li><a href="https://slhssharks.bigteams.com/" target="_blank">BigTeams</a></li>
+      <li><a href="https://www.facebook.com/StLouisSharksAthletics/" target="_blank">Facebook</a></li>
+      <li><a href="mailto:sharks@stlouisschools.net">Contact Coach</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 St. Louis Sharks Softball · St. Louis, MI</span>
+    <span>Home of the Sharks 🦈</span>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──
+const roster = [
+  { num: 1,  name: "Player Name",  pos: "CF",  grade: "Sr",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 5,  name: "Player Name",  pos: "SS",  grade: "Sr",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 7,  name: "Player Name",  pos: "P/3B", grade: "Jr", avg: ".000", hr: 0,  rbi: 0 },
+  { num: 10, name: "Player Name",  pos: "C",   grade: "Sr",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 12, name: "Player Name",  pos: "1B",  grade: "Jr",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 14, name: "Player Name",  pos: "2B",  grade: "So",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 17, name: "Player Name",  pos: "LF",  grade: "So",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 20, name: "Player Name",  pos: "RF",  grade: "Fr",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 22, name: "Player Name",  pos: "P",   grade: "Jr",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 24, name: "Player Name",  pos: "3B",  grade: "So",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 28, name: "Player Name",  pos: "DP",  grade: "Fr",  avg: ".000", hr: 0,  rbi: 0 },
+  { num: 31, name: "Player Name",  pos: "DH",  grade: "Sr",  avg: ".000", hr: 0,  rbi: 0 },
+];
+
+const statsData = [
+  { name: "No. 7 (P/3B)",  pos: "P/3B", g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 1 (CF)",    pos: "CF",   g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 12 (1B)",   pos: "1B",   g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 5 (SS)",    pos: "SS",   g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 22 (P)",    pos: "P",    g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 31 (DH)",   pos: "DH",  g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 10 (C)",    pos: "C",   g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 17 (LF)",   pos: "LF",  g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 24 (3B)",   pos: "3B",  g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 14 (2B)",   pos: "2B",  g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 20 (RF)",   pos: "RF",  g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+  { name: "No. 28 (DP)",   pos: "DP",  g: 0, ab: 0, h: 0, dbl: 0, trp: 0, hr: 0, rbi: 0, r: 0, sb: 0, avg: ".000", obp: ".000" },
+];
+
+const schedule = [
+  { date: "Apr 7",  opp: "Season Opener — TBD",     loc: "Home", result: "TBD", score: null, type: "upcoming" },
+  { date: "Apr 11", opp: "Opponent TBD",             loc: "Away", result: "TBD", score: null, type: "upcoming" },
+  { date: "Apr 14", opp: "Opponent TBD",             loc: "Home", result: "TBD", score: null, type: "upcoming" },
+  { date: "Apr 18", opp: "Opponent TBD",             loc: "Away", result: "TBD", score: null, type: "upcoming" },
+  { date: "Apr 22", opp: "Opponent TBD",             loc: "Home", result: "TBD", score: null, type: "upcoming" },
+  { date: "Apr 25", opp: "Opponent TBD",             loc: "Away", result: "TBD", score: null, type: "upcoming" },
+  { date: "Apr 28", opp: "Opponent TBD",             loc: "Home", result: "TBD", score: null, type: "upcoming" },
+  { date: "May 2",  opp: "Opponent TBD",             loc: "Away", result: "TBD", score: null, type: "upcoming" },
+  { date: "May 6",  opp: "Opponent TBD",             loc: "Home", result: "TBD", score: null, type: "upcoming" },
+  { date: "May 9",  opp: "Opponent TBD",             loc: "Away", result: "TBD", score: null, type: "upcoming" },
+  { date: "May 13", opp: "Opponent TBD",             loc: "Home", result: "TBD", score: null, type: "upcoming" },
+  { date: "May 16", opp: "Opponent TBD",             loc: "Away", result: "TBD", score: null, type: "upcoming" },
+  { date: "May 22", opp: "Conference Tournament",    loc: "TBD",  result: "TBD", score: null, type: "upcoming" },
+];
+
+const videos = [
+  { tag: "Game Highlights", title: "Win vs. Montabella — 19-1", date: "Apr 11, 2026" },
+  { tag: "Game Highlights", title: "Win vs. MLS — Pitcher Dominates", date: "Apr 18, 2026" },
+  { tag: "Walk-Off",        title: "Sanford Meridian — Final Out", date: "May 2, 2026" },
+  { tag: "Home Run",        title: "No. 12 — Solo Shot to Left Field", date: "Apr 7, 2026" },
+  { tag: "Practice",        title: "Pre-Season Training Reel", date: "Mar 15, 2026" },
+  { tag: "Awards",          title: "Senior Night Ceremony 2025", date: "May 22, 2025" },
+];
+
+const photoEmojis = ["🥎","🏆","🦈","⚾","🎯","🏅","🥎","💪","🦈","🏆","🥎","🎉"];
+
+// ── RENDER ROSTER ──
+function renderRoster() {
+  const grid = document.getElementById('roster-grid');
+  grid.innerHTML = roster.map(p => `
+    <div class="player-card">
+      <div class="player-photo">
+        🥎
+        <div class="player-num">#${p.num}</div>
+      </div>
+      <div class="player-name">${p.name}</div>
+      <div class="player-pos">${p.pos}</div>
+      <div class="player-grade">${p.grade} · #${p.num}</div>
+      <div class="player-stats-mini">
+        <div class="mini-stat"><span class="mini-stat-val">${p.avg}</span><span class="mini-stat-key">AVG</span></div>
+        <div class="mini-stat"><span class="mini-stat-val">${p.hr}</span><span class="mini-stat-key">HR</span></div>
+        <div class="mini-stat"><span class="mini-stat-val">${p.rbi}</span><span class="mini-stat-key">RBI</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── RENDER STATS ──
+function renderStats() {
+  const tbody = document.getElementById('stats-body');
+  const maxAvg = Math.max(...statsData.map(p => parseFloat(p.avg)));
+  tbody.innerHTML = statsData.map(p => `
+    <tr>
+      <td>${p.name}</td>
+      <td>${p.pos}</td>
+      <td>${p.g}</td>
+      <td>${p.ab}</td>
+      <td>${p.h}</td>
+      <td>${p.dbl}</td>
+      <td>${p.trp}</td>
+      <td>${p.hr}</td>
+      <td>${p.rbi}</td>
+      <td>${p.r}</td>
+      <td>${p.sb}</td>
+      <td class="${parseFloat(p.avg) >= maxAvg ? 'stat-highlight' : ''}">${p.avg}</td>
+      <td>${p.obp}</td>
+    </tr>
+  `).join('');
+}
+
+// ── RENDER SCHEDULE ──
+function renderSchedule() {
+  const list = document.getElementById('schedule-list');
+  list.innerHTML = schedule.map(g => `
+    <div class="game-row ${g.type}">
+      <div class="game-date">${g.date}</div>
+      <div>
+        <div class="game-opponent">vs. ${g.opp}</div>
+        <div class="game-location">${g.loc === 'Home' ? '🏠 Home' : g.loc === 'Away' ? '✈️ Away' : g.loc}</div>
+      </div>
+      <div class="game-result">
+        ${g.result === 'W' ? `<span class="result-w">W ${g.score}</span>` :
+          g.result === 'L' ? `<span class="result-l">L ${g.score}</span>` :
+          `<span class="result-tbd">Upcoming</span>`}
+      </div>
+      <a href="https://gc.com" target="_blank" class="game-gc">GameChanger ↗</a>
+    </div>
+  `).join('');
+}
+
+// ── COUNTDOWN ──
+function updateCountdown() {
+  const gameTime = new Date('2026-04-07T16:00:00'); // April 7, 4:00 PM
+  const now = new Date();
+  const diff = gameTime - now;
+
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '0';
+    document.getElementById('cd-hours').textContent = '0';
+    document.getElementById('cd-mins').textContent = '0';
+    document.getElementById('cd-secs').textContent = '0';
+    return;
+  }
+
+  const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs  = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('cd-days').textContent  = String(days).padStart(2, '0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+  document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
+}
+
+// ── RENDER VIDEOS ──
+function renderVideos() {
+  const grid = document.getElementById('video-grid');
+  grid.innerHTML = videos.map(v => `
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-meta">
+        <span class="video-tag">${v.tag}</span>
+        <div class="video-title">${v.title}</div>
+        <div class="video-date">${v.date}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── RENDER PHOTOS ──
+function renderPhotos() {
+  const grid = document.getElementById('photo-grid');
+  grid.innerHTML = photoEmojis.map((e, i) => `
+    <div class="photo-card">
+      ${e}
+      <div class="photo-overlay"></div>
+    </div>
+  `).join('');
+}
+
+// ── TAB SWITCHING ──
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+
+  const tabIndex = ['roster','stats','schedule','videos','photos','sponsors'];
+  document.querySelectorAll('.tab')[tabIndex.indexOf(tab)].classList.add('active');
+  document.getElementById(`sec-${tab}`).classList.add('active');
+
+  window.scrollTo({ top: 300, behavior: 'smooth' });
+}
+
+// ── TABLE SORT ──
+let sortDir = {};
+function sortTable(col) {
+  sortDir[col] = !sortDir[col];
+  const data = [...statsData].sort((a, b) => {
+    const vals = [a.name, a.pos, a.g, a.ab, a.h, a.dbl, a.trp, a.hr, a.rbi, a.r, a.sb, parseFloat(a.avg), parseFloat(a.obp)];
+    const valsb = [b.name, b.pos, b.g, b.ab, b.h, b.dbl, b.trp, b.hr, b.rbi, b.r, b.sb, parseFloat(b.avg), parseFloat(b.obp)];
+    if (typeof vals[col] === 'string') return sortDir[col] ? vals[col].localeCompare(valsb[col]) : valsb[col].localeCompare(vals[col]);
+    return sortDir[col] ? vals[col] - valsb[col] : valsb[col] - vals[col];
+  });
+  const tbody = document.getElementById('stats-body');
+  const maxAvg = Math.max(...data.map(p => parseFloat(p.avg)));
+  tbody.innerHTML = data.map(p => `
+    <tr>
+      <td>${p.name}</td><td>${p.pos}</td><td>${p.g}</td><td>${p.ab}</td><td>${p.h}</td>
+      <td>${p.dbl}</td><td>${p.trp}</td><td>${p.hr}</td><td>${p.rbi}</td><td>${p.r}</td>
+      <td>${p.sb}</td>
+      <td class="${parseFloat(p.avg) >= maxAvg ? 'stat-highlight' : ''}">${p.avg}</td>
+      <td>${p.obp}</td>
+    </tr>
+  `).join('');
+}
+
+// ── INIT ──
+renderRoster();
+renderStats();
+renderSchedule();
+renderVideos();
+renderPhotos();
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
